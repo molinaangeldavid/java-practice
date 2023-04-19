@@ -4,7 +4,6 @@ import java.util.Arrays;
 import java.util.Random;
 
 public class Arreglo {
-	private int len;
 	private float arr1[];
 	private float arr2[];
 	
@@ -16,12 +15,11 @@ public class Arreglo {
 		this.arr2 = arr2;
 	}
 	
-	public float[] inicializarA(float[] arr) {
+	public void inicializarA() {
 		Random r = new Random();
-		for(int i = 0; i < arr.length;i++) {
-			arr[i] = r.nextFloat() * 10;
+		for(int i = 0; i < this.arr1.length;i++) {
+			this.arr1[i] = r.nextFloat() * 100;
 		}
-		return arr;
 	}
 	
 	public void mostrar(float[] arr) {
@@ -31,19 +29,21 @@ public class Arreglo {
 	public float[] ordenar(float[] arr) {
 		float arr2[] = new float[arr.length];
 		Arrays.sort(arr);
-		for(int i = arr.length; i>=0 ; i--) {
+		for(int i = arr.length - 1; i>=0 ; i--) {
 			arr2[i] = arr[i];
 		}
 		return arr2;
 	}
 	
-	public float[] inicializarB() {
-		
+	public void inicializarB() {
+		for(int i = 0 ; i < this.arr2.length ; i++) {
+			if (i < 10 ){
+				this.arr2[i] = this.arr1[i];
+			}else {
+				this.arr2[i] = (float) 0.5;
+			}
+		}
 	}
 	
-	public static String toString(float[] arr){
-		String arr = "";
-		for(int i = 0;i < arr.length);)
-	}
 	
 }
