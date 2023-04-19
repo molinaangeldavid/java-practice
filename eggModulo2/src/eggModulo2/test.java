@@ -6,8 +6,10 @@ public class test {
 
 	public static void main(String[] args) {
 		Random random = new Random();
-		String word[]= {"paloma","gil"};
-		System.out.println(word[1].substring(2, 3));
+//		String word[]= {"paloma","gil"};
+//		System.out.println(word[1].substring(2, 3));
+		Integer n = -32332;
+		System.out.println(Math.abs(n));
 	}
 	
 }
