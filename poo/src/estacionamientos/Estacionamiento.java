@@ -9,7 +9,6 @@ public class Estacionamiento {
 	private ArrayList<Lugar> lugares;
 	private int facturacion;
 	
-	
 	public Estacionamiento() {
 		lugares = new ArrayList<Lugar>();
 	}
@@ -37,6 +36,7 @@ public class Estacionamiento {
 		for (int i = 0 ; i < lugares.size() ; i++) {
 			 if (!lugares.get(i).isLibre()) {
 				 ocupados++;
+				 
 			 }
 		 }
 		return ocupados;
