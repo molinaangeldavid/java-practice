@@ -1,11 +1,10 @@
 package mainCollections;
 
-public class Ejercicio2 {
+public class ejercicio2Extra {
 
 	public static void main(String[] args) {
+		// TODO Auto-generated method stub
 
-//		
-		
 	}
 
 }

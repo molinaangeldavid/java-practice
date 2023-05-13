@@ -40,18 +40,16 @@ public class Ejercicio1 {
 		System.out.println("Ingrese de nuevo el nombre de la raza: ");
 		nombre2 = scan.next();
 		Iterator<String> it = razas.iterator();
-		int con = 0;
+		int longitud = razas.size();
 		while(it.hasNext()) {
 
 			String var = it.next();
 			if(var.equals(nombre2)) {
 				it.remove();
-				con++;
 			}
-			if(con == 0) {
-				System.out.println("La raza no existe");
-				break;
-			}
+		}
+		if(longitud == razas.size()) {
+			System.out.println("La raza no existe");
 		}
 		System.out.println("");
 		System.out.println("Lista actualizada");
