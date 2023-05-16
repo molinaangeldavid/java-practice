@@ -12,7 +12,6 @@ public class Persona {
 	}
 	
 	public Persona(String nombre, String apellido, String documento, Perro perro) {
-		super();
 		this.nombre = nombre;
 		this.apellido = apellido;
 		this.documento = documento;
@@ -20,7 +19,6 @@ public class Persona {
 	}
 
 	public Persona(String nombre, String apellido, String documento) {
-		super();
 		this.nombre = nombre;
 		this.apellido = apellido;
 		this.documento = documento;
@@ -58,20 +56,16 @@ public class Persona {
 		this.perro = perro;
 	}
 	
-	public void agregarPerro(Perro p) {
+	public void adoptarPerro(Perro p) {
 		setPerro(p);
 	}
-	
-	public void mostrarInfo() {
-		System.out.println("Nombre: " + this.nombre);
-		System.out.println("Apellido: " + this.apellido);
-		System.out.println("Documento: " + this.documento);
-		System.out.println("Nombre del perro: " + perro.getNombre());
-		System.out.println("Raza del perro: " + perro.getRaza());
-		System.out.println("Edad del perro: " + perro.getEdad());
-		System.out.println("Tamanio del perro: " + perro.getTamanio());
-		
+
+	@Override
+	public String toString() {
+		return "Persona [nombre=" + nombre + ", apellido=" + apellido + ", documento=" + documento + "]";
 	}
+	
+	
 	
 	
 	

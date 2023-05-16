@@ -3,7 +3,7 @@
   associations="true" dependencies="false" nesting-relationships="true" router="FAN">  
   <class id="1" language="java" name="entidad.RevolverAgua" project="relations" 
     file="/relations/src/entidad/RevolverAgua.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="277" width="149" x="496" y="22"/>    
+    <position height="-1" width="-1" x="473" y="195"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -29,9 +29,14 @@
     </display>  
   </class>  
   <association id="4">    
+    <bendpoint x="795" y="272"/>    
     <end type="SOURCE" refId="3" navigable="false">      
-      <attribute id="5" name="jugadores"/>      
-      <multiplicity id="6" minimum="0" maximum="2147483647"/>    
+      <attribute id="5" name="jugadores">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="6" minimum="0" maximum="2147483647">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
     </end>    
     <end type="TARGET" refId="2" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
