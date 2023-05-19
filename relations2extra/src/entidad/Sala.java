@@ -1,14 +1,11 @@
 package entidad;
 
-import java.util.ArrayList;
-
 public class Sala {
 	
 	private int numero;
-	private ArrayList<Asiento> asientos;
+	private Asiento[][] asientos = new Asiento[8][6];
 	
 	public Sala() {
-		asientos = new ArrayList<Asiento>();
 		this.DefinirAsientos();
 	}
 	
@@ -25,11 +22,11 @@ public class Sala {
 		this.numero = numero;
 	}
 
-	public ArrayList<Asiento> getAsientos() {
+	public Asiento[][] getAsientos() {
 		return asientos;
 	}
 
-	public void setAsientos(ArrayList<Asiento> asientos) {
+	public void setAsientos(Asiento[][] asientos) {
 		this.asientos = asientos;
 	}
 	
@@ -37,17 +34,21 @@ public class Sala {
 		String columnasAsientos[] = {"A","B","C","D","E","F"};
 		for(int i = 0 ; i < 8  ; i++) {
 			for(int j = 0 ; j < 6 ; j++) {
-				asientos.add(new Asiento(columnasAsientos[j],(i + 1)));				
+				asientos[i][j] = new Asiento(columnasAsientos[j],(i + 1));				
 			}
 		}
 	}
 	
 	public void mostrarAsientos() {
-		Asiento asiento;
-		for(int i = 1 ; i <= 8  ; i++) {
-			for(int j = 1 ; j <= 6 ; j++) {
-				asiento = this.asientos.get(i);
-				System.out.print("[ " + asiento.getNumero() + "  " + asiento.getLetra() + "  " + asiento.getDisponible()+ " ]");
+		String ocupado;
+		for(int i = 7; i >= 0  ; i--) {
+			for(int j = 0 ; j < 6 ; j++) {
+				if(this.asientos[i][j].getDisponible()) {
+					ocupado = "	X";
+				}else {
+					ocupado = " ";
+				}
+				System.out.print("[" + this.asientos[i][j].getNumero() + "  " + this.asientos[i][j].getLetra() + "  " + ocupado+ "] " );
 			}
 			System.out.println("");
 		}

@@ -39,7 +39,7 @@ public class Cliente {
 	public void setDinero(double dinero) {
 		this.dinero = dinero;
 	}
-
+	
 	@Override
 	public String toString() {
 		return "Cliente [nombre=" + nombre + ", edad=" + edad + ", dinero=" + dinero + "]";

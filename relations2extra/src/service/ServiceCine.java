@@ -1,17 +1,14 @@
 package service;
 
 import java.util.Scanner;
-
 import java.util.ArrayList;
 import java.util.Random;
-import java.util.HashMap;
 
 import entidad.Cine;
 import entidad.Sala;
 import entidad.Pelicula;
-import entidad.Espectador;
-import entidad.Funcion;
 import entidad.Cliente;
+import entidad.Asiento;
 
 
 
@@ -22,40 +19,28 @@ public class ServiceCine {
 		
 		System.out.println("Ingrese el nombre del cine: ");
 		String nombre = scan.next();
+				
+		Sala sala = new Sala(1);
 		
-		System.out.println("Ingrese la cantidad de salas que tiene el cine: ");
-		int cantidadSalas = scan.nextInt();
-		
-		ArrayList<Sala> salas = new ArrayList<Sala>();
-		
-		for (int i = 0 ; i < cantidadSalas ; i++) {
-			salas.add(new Sala(i+1));
-		}
-		
-		ArrayList<Pelicula> peliculas = new ArrayList<Pelicula>();
-		
-		System.out.println("Hay" + cantidadSalas + ".Debes crear " + cantidadSalas + " peliculas.");
-		
-		for(int i = 0 ; i < cantidadSalas ; i++) {
-			System.out.println("Ingrese el titulo de la pelicula: ");
-			String peliculaNombre = scan.next();
-			
-			System.out.println("Ingrese director de la pelicula: ");
-			String peliculaDirectorNombre = scan.next();
-			
-			System.out.println("Ingrese la duracion de la pelicula en minutos: ");
-			int peliculaDuracionMinutos = scan.nextInt();
-			
-			System.out.println("Ingrese la edad minima de la pelicula: ");
-			int peliculaEdadMinima = scan.nextInt();
-			
-			peliculas.add(new Pelicula(peliculaNombre,peliculaDirectorNombre,peliculaDuracionMinutos,peliculaEdadMinima));	
-		}
+		System.out.println("Ingrese el titulo de la pelicula: ");
+		String peliculaNombre = scan.next();
+
+		System.out.println("Ingrese director de la pelicula: ");
+		String peliculaDirectorNombre = scan.next();
+
+		System.out.println("Ingrese la duracion de la pelicula en minutos: ");
+		int peliculaDuracionMinutos = scan.nextInt();
+
+		System.out.println("Ingrese la edad minima de la pelicula: ");
+		int peliculaEdadMinima = scan.nextInt();
+
+		Pelicula pelicula = new Pelicula(peliculaNombre,peliculaDirectorNombre,peliculaDuracionMinutos,peliculaEdadMinima);	
+
 		
 		System.out.println("Ingrese el precio de las funcion: ");
 		double precioFuncion = scan.nextDouble();
 		
-		return new Cine(nombre,salas,peliculas,precioFuncion);
+		return new Cine(nombre,sala,pelicula,precioFuncion);
 	}
 	
 	public ArrayList<Cliente> crearClientes(){
@@ -77,14 +62,35 @@ public class ServiceCine {
 		}
 		return clientes;
 	}
-	
-	public void crearFuncionesAleatoriamente(Cine c1) {
-		ArrayList<Funcion> funciones = new ArrayList<Funcion>();
-		for(int i = 0 ; i < c1.getSalas().size(); i++) {
-			funciones.add(new Funcion(c1.getSalas().get(i).getNumero(),c1.getPeliculas().get(i)));
+		
+	public void crearEspectadoresAleatoriamente(Cine c1, ArrayList<Cliente> clientes) {
+		Random random = new Random();
+		int asientofila;
+		int asientocol;
+		Asiento asiento;
+		for(Cliente cliente: clientes) {
+			if(cliente.getDinero() > c1.getPrecio()) {
+				if(cliente.getEdad() > c1.getPeliculas().getEdadMinima()) {
+					do {
+						asientofila = random.nextInt(c1.getSala().getAsientos().length);
+						asientocol = random.nextInt(c1.getSala().getAsientos()[0].length);
+						asiento = c1.getSala().getAsientos()[asientofila][asientocol];
+					} while (asiento.getDisponible());					
+					asiento.setDisponible(true);
+					System.out.println("El cliente " + cliente.getNombre() +" puede ver la pelicula.");
+				}else {
+					System.out.println("El cliente "+cliente.getNombre()+" tiene edad menor a la edadMinima");
+				}
+			}else{
+				System.out.println("El cliente " + cliente.getNombre() +" no tiene dinero suficiente.");
+			}
+			
 		}
-		c1.setFunciones(funciones);
+		
 	}
+	
+	
+	
 	
 	
 	
